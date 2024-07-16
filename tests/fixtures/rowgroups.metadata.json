@@ -1,0 +1,98 @@
+{
+  "version": 2,
+  "created_by": "parquet-cpp-arrow version 14.0.2",
+  "metadata_length": 1602,
+  "schema": [
+    {
+      "repetition_type": "REQUIRED",
+      "name": "schema",
+      "num_children": 1
+    },
+    {
+      "type": "INT64",
+      "repetition_type": "OPTIONAL",
+      "name": "numbers"
+    }
+  ],
+  "num_rows": 15,
+  "row_groups": [
+    {
+      "columns": [
+        {
+          "file_offset": 150,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 71,
+            "dictionary_page_offset": 4,
+            "encoding_stats": [
+              { "count": 1, "encoding": "PLAIN", "page_type": "DICTIONARY_PAGE" },
+              { "count": 1, "encoding": "RLE_DICTIONARY", "page_type": "DATA_PAGE" }
+            ],
+            "encodings": ["PLAIN", "RLE", "RLE_DICTIONARY"],
+            "num_values": 10,
+            "path_in_schema": ["numbers"],
+            "statistics": {
+              "max": 10,
+              "min": 1,
+              "max_value": 10,
+              "min_value": 1,
+              "null_count": 0
+            },
+            "total_compressed_size": 146,
+            "total_uncompressed_size": 172,
+            "type": "INT64"
+          }
+        }
+      ],
+      "file_offset": 4,
+      "num_rows": 10,
+      "ordinal": 0,
+      "total_byte_size": 172,
+      "total_compressed_size": 146
+    },
+    {
+      "columns": [
+        {
+          "file_offset": 368,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 294,
+            "dictionary_page_offset": 248,
+            "encoding_stats": [
+              { "count": 1, "encoding": "PLAIN", "page_type": "DICTIONARY_PAGE" },
+              { "count": 1, "encoding": "RLE_DICTIONARY", "page_type": "DATA_PAGE" }
+            ],
+            "encodings": ["PLAIN", "RLE", "RLE_DICTIONARY"],
+            "num_values": 5,
+            "path_in_schema": ["numbers"],
+            "statistics": {
+              "max": 15,
+              "min": 11,
+              "max_value": 15,
+              "min_value": 11,
+              "null_count": 0
+            },
+            "total_compressed_size": 120,
+            "total_uncompressed_size": 126,
+            "type": "INT64"
+          }
+        }
+      ],
+      "file_offset": 248,
+      "num_rows": 5,
+      "ordinal": 1,
+      "total_byte_size": 126,
+      "total_compressed_size": 120
+    }
+  ],
+  "key_value_metadata": [
+    {
+      "key": "pandas",
+      "value": "{\"index_columns\": [{\"kind\": \"range\", \"name\": null, \"start\": 0, \"stop\": 15, \"step\": 1}], \"column_indexes\": [{\"name\": null, \"field_name\": null, \"pandas_type\": \"unicode\", \"numpy_type\": \"object\", \"metadata\": {\"encoding\": \"UTF-8\"}}], \"columns\": [{\"name\": \"numbers\", \"field_name\": \"numbers\", \"pandas_type\": \"int64\", \"numpy_type\": \"int64\", \"metadata\": null}], \"creator\": {\"library\": \"pyarrow\", \"version\": \"14.0.2\"}, \"pandas_version\": \"2.1.4\"}"
+    },
+    {
+      "key": "ARROW:schema",
+      "value": "/////2gCAAAQAAAAAAAKAA4ABgAFAAgACgAAAAABBAAQAAAAAAAKAAwAAAAEAAgACgAAAOgBAAAEAAAAAQAAAAwAAAAIAAwABAAIAAgAAAAIAAAAEAAAAAYAAABwYW5kYXMAALMBAAB7ImluZGV4X2NvbHVtbnMiOiBbeyJraW5kIjogInJhbmdlIiwgIm5hbWUiOiBudWxsLCAic3RhcnQiOiAwLCAic3RvcCI6IDE1LCAic3RlcCI6IDF9XSwgImNvbHVtbl9pbmRleGVzIjogW3sibmFtZSI6IG51bGwsICJmaWVsZF9uYW1lIjogbnVsbCwgInBhbmRhc190eXBlIjogInVuaWNvZGUiLCAibnVtcHlfdHlwZSI6ICJvYmplY3QiLCAibWV0YWRhdGEiOiB7ImVuY29kaW5nIjogIlVURi04In19XSwgImNvbHVtbnMiOiBbeyJuYW1lIjogIm51bWJlcnMiLCAiZmllbGRfbmFtZSI6ICJudW1iZXJzIiwgInBhbmRhc190eXBlIjogImludDY0IiwgIm51bXB5X3R5cGUiOiAiaW50NjQiLCAibWV0YWRhdGEiOiBudWxsfV0sICJjcmVhdG9yIjogeyJsaWJyYXJ5IjogInB5YXJyb3ciLCAidmVyc2lvbiI6ICIxNC4wLjIifSwgInBhbmRhc192ZXJzaW9uIjogIjIuMS40In0AAQAAABQAAAAQABQACAAGAAcADAAAABAAEAAAAAAAAQIQAAAAIAAAAAQAAAAAAAAABwAAAG51bWJlcnMACAAMAAgABwAIAAAAAAAAAUAAAAAAAAAA"
+    }
+  ]
+}

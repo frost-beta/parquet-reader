@@ -1,0 +1,30 @@
+{
+  "name": "@frost-beta/parquet-reader",
+  "version": "0.0.1-dev",
+  "description": "Read data from parquet files",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepack": "tsc",
+    "test": "tsx --test tests/*.spec.ts"
+  },
+  "author": "zcbenz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frost-beta/parquet-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/frost-beta/parquet-reader/issues"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.8",
+    "hyparquet-compressors": "0.1.4",
+    "tsx": "4.16.2",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "hyparquet": "1.0.0"
+  }
+}

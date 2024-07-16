@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "created_by": "parquet-mr version 1.8.1 (build 4aba4dae7bb0d4edbcf7923ae1339f28fd3f7fcf)",
+  "key_value_metadata": [
+    {
+      "key": "org.apache.spark.sql.parquet.row.metadata",
+      "value": "{\"type\":\"struct\",\"fields\":[{\"name\":\"a\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"b\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"c\",\"type\":\"double\",\"nullable\":false,\"metadata\":{}},{\"name\":\"d\",\"type\":\"boolean\",\"nullable\":false,\"metadata\":{}},{\"name\":\"e\",\"type\":{\"type\":\"array\",\"elementType\":\"integer\",\"containsNull\":false},\"nullable\":true,\"metadata\":{}}]}"
+    }
+  ],
+  "metadata_length": 836,
+  "num_rows": 5,
+  "row_groups": [
+    {
+      "columns": [
+        {
+          "file_offset": 4,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 4,
+            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "num_values": 5,
+            "path_in_schema": ["a"],
+            "statistics": {
+              "max": "abc",
+              "min": "abc",
+              "null_count": 1
+            },
+            "total_compressed_size": 63,
+            "total_uncompressed_size": 59,
+            "type": "BYTE_ARRAY"
+          }
+        },
+        {
+          "file_offset": 67,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 67,
+            "encodings": ["DELTA_BINARY_PACKED"],
+            "num_values": 5,
+            "path_in_schema": ["b"],
+            "statistics": {
+              "max": 5,
+              "min": 1,
+              "null_count": 0
+            },
+            "total_compressed_size": 49,
+            "total_uncompressed_size": 47,
+            "type": "INT32"
+          }
+        },
+        {
+          "file_offset": 116,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 116,
+            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "num_values": 5,
+            "path_in_schema": ["c"],
+            "statistics": {
+              "max": 5,
+              "min": 2,
+              "null_count": 0
+            },
+            "total_compressed_size": 88,
+            "total_uncompressed_size": 94,
+            "type": "DOUBLE"
+          }
+        },
+        {
+          "file_offset": 204,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 204,
+            "encodings": ["RLE"],
+            "num_values": 5,
+            "path_in_schema": ["d"],
+            "statistics": {
+              "max": true,
+              "min": false,
+              "null_count": 0
+            },
+            "total_compressed_size": 39,
+            "total_uncompressed_size": 37,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "file_offset": 243,
+          "meta_data": {
+            "codec": "SNAPPY",
+            "data_page_offset": 243,
+            "encodings": ["PLAIN", "RLE_DICTIONARY"],
+            "num_values": 10,
+            "path_in_schema": [
+              "e",
+              "list",
+              "element"
+            ],
+            "statistics": {
+              "max": 3,
+              "min": 1,
+              "null_count": 2
+            },
+            "total_compressed_size": 78,
+            "total_uncompressed_size": 74,
+            "type": "INT32"
+          }
+        }
+      ],
+      "num_rows": 5,
+      "total_byte_size": 311
+    }
+  ],
+  "schema": [
+    {
+      "name": "spark_schema",
+      "num_children": 5
+    },
+    {
+      "converted_type": "UTF8",
+      "name": "a",
+      "repetition_type": "OPTIONAL",
+      "type": "BYTE_ARRAY"
+    },
+    {
+      "name": "b",
+      "repetition_type": "REQUIRED",
+      "type": "INT32"
+    },
+    {
+      "name": "c",
+      "repetition_type": "REQUIRED",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "d",
+      "repetition_type": "REQUIRED",
+      "type": "BOOLEAN"
+    },
+    {
+      "converted_type": "LIST",
+      "name": "e",
+      "num_children": 1,
+      "repetition_type": "OPTIONAL"
+    },
+    {
+      "name": "list",
+      "num_children": 1,
+      "repetition_type": "REPEATED"
+    },
+    {
+      "name": "element",
+      "repetition_type": "REQUIRED",
+      "type": "INT32"
+    }
+  ]
+}
