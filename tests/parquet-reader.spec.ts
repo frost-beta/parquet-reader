@@ -42,6 +42,19 @@ describe('ParquetReader', () => {
       });
     }
   });
+
+  it('shuffles results', async () => {
+    const file = 'duckdb2557';
+    const json = JSON.parse(fs.readFileSync(path.join(fixtures, `${file}.json`)));
+    const reader = new ParquetReader(path.join(fixtures, `${file}.parquet`));
+    const rows = [];
+    for await (const data of await reader.getIterator({shuffle: true, compressors})) {
+      rows.push(data);
+    }
+    await reader.close();
+    replaceNonJsonValues(rows);
+    assert.notDeepStrictEqual(json, rows);
+  });
 });
 
 describe('ParquetGroupReader', () => {

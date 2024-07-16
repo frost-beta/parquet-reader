@@ -82,7 +82,9 @@ export class ParquetReader {
           rowEnd: Math.min(index + chunkSize, rowsCount),
           onComplete: (data) => rows = data,
         });
-        for (const row of rows!)
+        if (options.shuffle)
+          shuffle(rows);
+        for (const row of rows)
           yield row;
       }
     })();
