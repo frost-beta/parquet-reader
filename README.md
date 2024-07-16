@@ -26,6 +26,10 @@ type IteratorOptions = {
      * Optional compressors.
      */
     compressors?: Compressors;
+    /**
+     * How many rows to read in one chunk?
+     */
+    chunkSize?: number;
 };
 
 export declare class ParquetReader {

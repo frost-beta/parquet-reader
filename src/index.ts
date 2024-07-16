@@ -16,6 +16,10 @@ type IteratorOptions = {
    * Optional compressors.
    */
   compressors?: Compressors;
+  /**
+   * How many rows to read in one chunk?
+   */
+  chunkSize?: number;
 };
 
 export class ParquetReader {
@@ -51,23 +55,35 @@ export class ParquetReader {
    * Return an generator which can be used to iterate the data.
    */
   async getIterator(options: IteratorOptions = {}): Promise<AsyncGenerator<unknown[]>> {
-    const indices = [...Array(await this.getRowsCount()).keys()];
+    // Read rows in chunks for much better performance.
+    const chunkSize = options.chunkSize ?? 128;
+    // For n rows, indices is [0, 16, 16 * 2, ..., 16 * M, 16 * M + X].
+    const rowsCount = await this.getRowsCount();
+    const indices = new Array(Math.ceil(rowsCount / chunkSize))
+    for (let i = 0; i < indices.length; ++i) {
+      if (i > Math.floor(rowsCount / chunkSize))
+        indices[i] = (i - 1) * chunkSize;
+      else
+        indices[i] = i * chunkSize;
+    }
     if (options.shuffle)
       shuffle(indices);
+    // Read the parquet file.
     const file = await this.getAsyncBuffer();
     const metadata = await this.getMetadata();
     return (async function*() {
       for (const index of indices) {
-        let result: undefined | unknown[] = undefined;
+        let rows: unknown[][] = [];
         await parquetRead({
           file,
           metadata,
           compressors: options.compressors,
           rowStart: index,
-          rowEnd: index + 1,
-          onComplete: (data) => result = data[0],
+          rowEnd: Math.min(index + chunkSize, rowsCount),
+          onComplete: (data) => rows = data,
         });
-        yield result!;
+        for (const row of rows!)
+          yield row;
       }
     })();
   }
@@ -155,8 +171,9 @@ async function handleToAsyncBuffer(handle: fs.FileHandle): Promise<AsyncBuffer> 
       let length = (end ?? stats.size) - position;
       const buffer = Buffer.alloc(length);
       while (length > 0) {
-        const chunkLength = Math.min(length, 16384);
-        const {bytesRead} = await handle.read(buffer, offset, chunkLength, position);
+        // The fileHanlde.read API has a hard limit for one read.
+        const chunkSize = Math.min(length, 16384);
+        const {bytesRead} = await handle.read(buffer, offset, chunkSize, position);
         position += bytesRead;
         offset += bytesRead;
         length -= bytesRead;
