@@ -97,6 +97,7 @@ export class ParquetReader {
     if (this.handle) {
       await this.handle.close();
       this.handle = undefined;
+      this.buffer = undefined;
       this.metadata = undefined;
     }
   }
